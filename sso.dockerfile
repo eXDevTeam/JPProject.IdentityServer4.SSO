@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+RUN apt-get update && apt-get install -y default-mysql-client-core
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -17,4 +18,5 @@ RUN dotnet publish "Jp.UI.SSO.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Jp.UI.SSO.dll"]
+COPY ./docker_scripts/custom_dotnet_entrypoint.sh /usr/local/bin/custom_dotnet_entrypoint.sh
+ENTRYPOINT [ "custom_dotnet_entrypoint.sh", "Jp.UI.SSO.dll" ]

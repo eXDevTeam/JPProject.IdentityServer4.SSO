@@ -8,8 +8,8 @@ export const environment = {
     GoogleClientId: "",
     FacebookClientId: "",
     ResourceServer: "http://localhost:5002/",
-    AuthorityUri:  "http://jpproject-sso:5001",
+    AuthorityUri:  "https://jpproject-sso:5001",
     RequireHttps: false,
-    Uri: "http://localhost:4200",
+    Uri: "http://localhost:4400",
     RecaptchaV3: "6LetvuoUAAAAAD7tTfL3007qcbNLpnhCZELh7rFs"
 };
